@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
   <!-- Formspree handles contact form submissions — zero setup required. -->
 
@@ -773,7 +773,10 @@
         <div class="about-info-grid">
           <div class="info-item"><strong>Name:</strong> Rohit Katkar</div>
           <div class="info-item"><strong>From:</strong> Chhatrapati Sambhaji Nagar</div>
-          <div class="info-item"><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b2d9d3c6d9d3c0c0dddadbc68081f2d5dfd3dbde9cd1dddf">[email&#160;protected]</a></div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=katkarrohit203@gmail.com" style="color:var(--accent)" target="_blank">katkarrohit203@gmail.com</a></div>
+          </div>
           <div class="info-item"><strong>Status:</strong> Available for Freelance</div>
         </div>
 
@@ -893,7 +896,7 @@
 
     <!-- Certifications -->
     <div class="reveal" style="margin-top:4rem">
-      <p class="section-label">// certifications</p>
+      <p class="section-label">certifications</p>
       <div class="certs-grid">
         <div class="cert-card">
           <div class="cert-icon green"><i class="fas fa-graduation-cap"></i></div>
@@ -1047,39 +1050,52 @@
 <section id="contact">
   <div class="section-container">
     <div class="reveal">
-      <p class="section-label">// 04 — contact</p>
+      <p class="section-label">contact</p>
       <h2 class="section-title">Let's <em>Connect</em></h2>
     </div>
 
     <div class="contact-grid reveal">
       <div class="contact-form">
         <div class="contact-intro">
-          <p style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);letter-spacing:.1em">// SEND_MESSAGE</p>
+          <p style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);letter-spacing:.1em">SEND_MESSAGE</p>
           <p class="contact-note">Fill out the form and I'll get back to you as soon as possible.</p>
         </div>
 
-        <form id="contactForm" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="contactName">Your Name</label>
-              <input id="contactName" name="name" type="text" class="form-input" placeholder="John Doe" required>
+        <form id="contactForm"
+            action="https://formsubmit.co/katkarrohit23@gmail.com"
+            method="POST">
+
+            <!-- Hidden settings -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="New Portfolio Message!">
+            <input type="hidden" name="_template" value="table">
+
+            <div class="form-row">
+                <div class="form-group">
+                <label class="form-label">Your Name</label>
+                <input name="name" type="text" class="form-input"  placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                <label class="form-label">Email</label>
+                <input name="email" type="email" class="form-input"  placeholder="Enter your Email" required>
+                </div>
             </div>
+
             <div class="form-group">
-              <label class="form-label" for="contactEmail">Email Address</label>
-              <input id="contactEmail" name="email" type="email" class="form-input" placeholder="john@example.com" required>
+                <label class="form-label">Subject</label>
+                <input name="subject" type="text" class="form-input" placeholder="What the Subject" required>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="contactSubject">Subject</label>
-            <input id="contactSubject" name="subject" type="text" class="form-input" placeholder="Project Collaboration" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="contactMessage">Message</label>
-            <textarea id="contactMessage" name="message" class="form-textarea" placeholder="Tell me about your project..." required></textarea>
-          </div>
-          <button type="submit" id="contactSubmitButton" class="btn-primary" style="width:100%;justify-content:center">
-            Send Message <i class="fas fa-paper-plane"></i>
-          </button>
+
+            <div class="form-group">
+                <label class="form-label">Message</label>
+                <textarea name="message" class="form-textarea" placeholder="Write your message..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="min-width:220px;">
+                Send Message <i class="fas fa-paper-plane"></i>
+            </button>
+
         </form>
       </div>
 
@@ -1095,7 +1111,7 @@
           <div class="ci-icon"><i class="fas fa-envelope"></i></div>
           <div>
             <div class="ci-label">Email</div>
-            <div class="ci-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="066d67726d677474696e6f72343546616b676f6a2865696b">[email&#160;protected]</a></div>
+            <div class="ci-val"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=katkarrohit203@gmail.com" style="color:var(--accent)" target="_blank">katkarrohit203@gmail.com</a></div>
           </div>
         </div>
         <div class="contact-info-item">
@@ -1288,42 +1304,31 @@ function showToast(msg, isError = false) {
 //    3. You click "Confirm" in that email.
 //    4. Done — every future submission arrives directly in your inbox. Forever.
 
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
   e.preventDefault();
 
-  const btn  = document.getElementById('contactSubmitButton');
   const form = this;
-
-  if (!form.checkValidity()) { form.reportValidity(); return; }
-
-  btn.disabled = true;
-  btn.innerHTML = 'Sending <i class="fas fa-spinner fa-spin"></i>';
+  const data = new FormData(form);
 
   try {
-    const res  = await fetch('https://formspree.io/f/katkarrohit203@gmail.com', {
-      method:  'POST',
-      headers: { 'Accept': 'application/json' },
-      body:    new FormData(form),
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: data,
+      headers: { 'Accept': 'application/json' }
     });
-    const data = await res.json();
 
-    if (res.ok) {
-      showToast("Message sent! I'll get back to you soon.");
+    if (response.ok) {
+      showToast("✅ Your response has been submitted!");
       form.reset();
     } else {
-      const errMsg = data.errors ? data.errors.map(e => e.message).join(', ') : 'Unknown error';
-      console.error('Formspree error:', data);
-      showToast('Send failed: ' + errMsg, true);
+      showToast("❌ Failed to send message", true);
     }
-  } catch (err) {
-    console.error('Network error:', err);   
-    showToast('Network error. Please check your connection.', true);
-  } finally {
-    btn.disabled = false;
-    btn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+
+  } catch (error) {
+    showToast("❌ Error sending message", true);
   }
 });
-
+s   
 // ── NAV ──
 function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
 window.addEventListener('scroll', () => {
